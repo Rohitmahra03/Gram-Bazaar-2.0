@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gram Bazaar | Online Shopping</title>
+  <meta name="description" content="Gram Bazaar par apni pasand ke products online kharidein.">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7f5;
+      color: #222;
+    }
+
+    .topbar {
+      background: #174d32;
+      color: white;
+      text-align: center;
+      padding: 9px;
+      font-size: 13px;
+    }
+
+    .navbar {
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 16px 5%;
+      box-shadow: 0 2px 8px #00000010;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      color: #207345;
+      font-size: 27px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .search {
+      display: flex;
+      flex: 1;
+      max-width: 440px;
+    }
+
+    .search input {
+      width: 100%;
+      min-width: 0;
+      padding: 11px;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+      font-size: 14px;
+    }
+
+    .search button {
+      padding: 11px 16px;
+      background: #207345;
+      color: white;
+      border: 0;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+
+    .navlinks {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .navlinks a {
+      text-decoration: none;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .navlinks a:hover {
+      color: #207345;
+    }
+
+    .hero {
+      margin: 28px auto;
+      width: 90%;
+      max-width: 1200px;
+      padding: 55px 35px;
+      background: #e3eee4;
+      border-radius: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 4vw, 44px);
+      color: #174d32;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 550px;
+      margin-bottom: 24px;
+    }
+
+    .shop-button {
+      display: inline-block;
+      background: #207345;
+      color: white;
+      text-decoration: none;
+      padding: 13px 24px;
+      border-radius: 5px;
+      font-weight: bold;
+    }
+
+    .section {
+      width: 90%;
+      max-width: 1200px;
+      margin: 35px auto;
+    }
+
+    .section h2 {
+      margin-bottom: 20px;
+      font-size: 25px;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category {
+      background: white;
+      padding: 25px 12px;
+      text-align: center;
+      border-radius: 8px;
+      border: 1px solid #e5e5e5;
+      font-weight: bold;
+    }
+
+    .products-empty {
+      background: white;
+      padding: 35px 20px;
+      text-align: center;
+      border-radius: 8px;
+      color: #666;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: #173d2b;
+      color: white;
+      text-align: center;
+      padding: 24px;
+      margin-top: 45px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 760px) {
+      .navbar {
+        padding: 15px 5%;
+      }
+
+      .search {
+        order: 3;
+        flex-basis: 100%;
+        max-width: none;
+      }
+
+      .navlinks {
+        gap: 13px;
+      }
+
+      .hero {
+        padding: 35px 22px;
+      }
+
+      .categories {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    Gram Bazaar mein aapka swagat hai!
+  </div>
+
+  <header class="navbar">
+    <a class="logo" href="index.html">Gram Bazaar</a>
+
+    <form class="search" id="searchForm">
+      <input id="searchInput" type="search"
+        placeholder="Product khojein..." aria-label="Product khojein">
+      <button type="submit">Search</button>
+    </form>
+
+    <nav class="navlinks" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="#categories">Categories</a>
+      <a href="#products">Products</a>
+      <a href="#orders">My Orders</a>
+      <a href="#account">Account</a>
+      <a href="#cart">Cart (0)</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Aapki apni online shopping ki duniya</h1>
+      <p>
+        Gram Bazaar par apni zaroorat ke products khojein
+        aur ek aasan shopping experience ka aanand lein.
+      </p>
+      <a class="shop-button" href="#products">Shop Now</a>
+    </section>
+
+    <section class="section" id="categories">
+      <h2>Product Categories</h2>
+      <div class="categories">
+        <div class="category">Grocery</div>
+        <div class="category">Fashion</div>
+        <div class="category">Home & Kitchen</div>
+      </div>
+    </section>
+
+    <section class="section" id="products">
+      <h2>Hamare Products</h2>
+      <div class="products-empty" id="productMessage">
+        Products jald hi yahan dikhaye jayenge.
+      </div>
+    </section>
+
+    <section class="section" id="orders">
+      <h2>My Orders</h2>
+      <p>Apne orders dekhne ke liye customer account system
+        agle steps mein banaya jayega.</p>
+    </section>
+
+    <section class="section" id="account">
+      <h2>Customer Account</h2>
+      <p>Login aur registration ki suvidha agle steps mein jodi jayegi.</p>
+    </section>
+
+    <section class="section" id="cart">
+      <h2>Shopping Cart</h2>
+      <p>Cart aur checkout kaam agle steps mein joda jayega.</p>
+    </section>
+  </main>
+
+  <footer>
+    <strong>Gram Bazaar</strong>
+    <p>Aapki apni online shopping ki duniya.</p>
+    <p>© 2026 Gram Bazaar. All rights reserved.</p>
+  </footer>
+
+  <script>
+    document.getElementById("searchForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const query = document.getElementById("searchInput").value.trim();
+
+      if (!query) {
+        alert("Kripya product ka naam likhein.");
+        return;
+      }
+
+      const message = document.getElementById("productMessage");
+      message.textContent = "Abhi products add nahi hue hain. Aapne search kiya: " + query;
+      document.getElementById("products").scrollIntoView({ behavior: "smooth" });
+    });
+  </script>
+
+</body>
+</html>
