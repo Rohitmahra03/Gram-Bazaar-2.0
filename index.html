@@ -323,19 +323,53 @@
       message.textContent = "Abhi products add nahi hue hain. Aapne search kiya: " + query;
       document.getElementById("products").scrollIntoView({ behavior: "smooth" });
     });
-    let cart = [];
+   let cart = JSON.parse(localStorage.getItem("gramBazaarCart")) || [];
 
 function addToCart(name, price) {
   cart.push({ name: name, price: price });
 
+  localStorage.setItem("gramBazaarCart", JSON.stringify(cart));
+
+  renderCart();
+
   alert(name + " cart mein add ho gaya!");
+}
+
+function renderCart() {
+  const cartItems = document.getElementById("cartItems");
+  const cartTotal = document.getElementById("cartTotal");
+
+  if (!cartItems || !cartTotal) return;
 
   const cartLink = document.querySelector('a[href="#cart"]');
 
   if (cartLink) {
     cartLink.textContent = "Cart (" + cart.length + ")";
   }
+
+  if (cart.length === 0) {
+    cartItems.innerHTML = "<p>Abhi cart khaali hai.</p>";
+    cartTotal.textContent = "Total: ₹0";
+    return;
+  }
+
+  cartItems.innerHTML = cart.map((item, index) =>
+    `<p>${item.name} — ₹${item.price}
+    <button onclick="removeFromCart(${index})">Remove</button></p>`
+  ).join("");
+
+  const total = cart.reduce((sum, item) => sum + item.price, 0);
+  cartTotal.textContent = "Total: ₹" + total;
 }
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  localStorage.setItem("gramBazaarCart", JSON.stringify(cart));
+  renderCart();
+}
+
+document.addEventListener("DOMContentLoaded", renderCart);
+renderCart();
   </script>
 
 </body>
