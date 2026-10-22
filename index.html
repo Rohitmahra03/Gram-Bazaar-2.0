@@ -245,6 +245,9 @@
       <p>Rozmarra ki zaroorat ke liye</p>
       <p style="color:#207345; font-size:20px; font-weight:bold; margin:10px 0;">₹99</p>
       <p>Demo product</p>
+      <button onclick="addToCart('Taazi Sabziyan', 99)">
+  Add to Cart
+</button>
     </article>
 
     <article style="background:white; padding:15px; border:1px solid #ddd; border-radius:10px;">
@@ -309,6 +312,19 @@
       message.textContent = "Abhi products add nahi hue hain. Aapne search kiya: " + query;
       document.getElementById("products").scrollIntoView({ behavior: "smooth" });
     });
+    let cart = [];
+
+function addToCart(name, price) {
+  cart.push({ name: name, price: price });
+
+  alert(name + " cart mein add ho gaya!");
+
+  const cartLink = document.querySelector('a[href="#cart"]');
+
+  if (cartLink) {
+    cartLink.textContent = "Cart (" + cart.length + ")";
+  }
+}
   </script>
 
 </body>
